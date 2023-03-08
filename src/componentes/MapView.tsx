@@ -2,8 +2,9 @@ import { useStore } from 'effector-react';
 import { useLayoutEffect, useRef } from 'react';
 import { $placesStore } from '../store/placesStore';
 import { Loading } from './Loading';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, { Popup } from 'mapbox-gl';
 import { setMap } from '../store/mapStore';
+import { Marker } from 'mapbox-gl';
 
 export const MapView = () => {
   const placesState = useStore($placesStore);
@@ -21,6 +22,9 @@ export const MapView = () => {
         zoom: 14
       });
 
+      // ponemos un marker en la posición y con un popup
+      const myLocationPopup = new Popup().setHTML(`<h4>Aquí estoy</h4><p>en algún lugar del mundo</p>`);
+      new Marker({ color: '#61dafb' }).setPopup(myLocationPopup).setLngLat(map.getCenter()).addTo(map);
       // guardamos el mapa en el store de mapas
       setMap(map);
     }
