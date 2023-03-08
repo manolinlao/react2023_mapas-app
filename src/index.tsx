@@ -10,5 +10,6 @@ if (!navigator.geolocation) {
   throw new Error('tu navegador no tiene geolocalización');
 }
 
+console.log('index.tsx');
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(<MapsApp />);

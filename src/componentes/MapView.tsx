@@ -3,10 +3,11 @@ import { useLayoutEffect, useRef } from 'react';
 import { $placesStore } from '../store/placesStore';
 import { Loading } from './Loading';
 import mapboxgl from 'mapbox-gl';
+import { setMap } from '../store/mapStore';
 
 export const MapView = () => {
-  const mapState = useStore($placesStore);
-  const { isLoading, userLocation } = mapState;
+  const placesState = useStore($placesStore);
+  const { isLoading, userLocation } = placesState;
 
   const mapDiv = useRef<HTMLDivElement>(null);
 
@@ -19,6 +20,9 @@ export const MapView = () => {
         center: userLocation,
         zoom: 14
       });
+
+      // guardamos el mapa en el store de mapas
+      setMap(map);
     }
   }, [isLoading]);
 

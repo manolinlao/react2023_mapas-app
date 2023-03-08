@@ -6,6 +6,9 @@ import { HomeScreen } from './screens/HomeScreen';
 import './styles.css';
 
 export const MapsApp = () => {
+
+  console.log('MapsApp')
+
   useEffect(() => {
     getUserLocation()
       .then((latLng) => {

@@ -12,11 +12,12 @@ const initialState: PlacesState = {
 
 // Events
 export const resetPlaces = createEvent('reset placeState');
-export const setUserLocation = createEvent<[number, number]>('set user location');
+export const setUserLocation = createEvent<[number, number]>('set user location'); // el payload es de tipo [number,number]
 
 // Effects
 
 // Store
+console.log('ejecutando createStore de placeStore');
 export const $placesStore = createStore(initialState)
   .reset(resetPlaces)
   .on(setUserLocation, (state, payload) => {
